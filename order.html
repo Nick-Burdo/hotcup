@@ -1,0 +1,858 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Заказ</title>
+<script src="js/libs/jquery-1.8.0.min.js"></script>
+<link href="css/order.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h2>Шаг №1. Выбор товара</h2>
+<h3>Выберите товар, затем разновидность упаковки, потом укажите нужное количество товара и нажмите зеленую кнопку "+" справа от суммы. Если вы хотите убрать из списка выбраный товар, нажмите красную кнопку "Х"</h3>
+<h3><span>Внимание!</span> Сумма заказа должна быть не менее 2500 руб</h3>
+<table id="orderTable">
+<tr>
+	<th colspan="2" class="name-cell">
+		Наименование<br>
+		<select id="teacafe">
+			<option value="0">Чай "ПРИНЦЕССА Канди", Цейлон, листовой</option>
+			<option value="1">Чай "ПРИНЦЕССА Канди", Цейлон, пакет.,черный</option>
+			<option value="2">Чай "ПРИНЦЕССА Нури", ОТБОРНЫЙ, листовой</option>
+			<option value="3">Чай "ПРИНЦЕССА Нури", Цейлон, пакет.,черный</option>
+			<option value="4">"ПРИНЦЕССА Нури",ароматизированный</option>				
+			<option value="5">Чай "ПРИНЦЕССА Гита", Индия, ГРАНУЛИРОВАННЫЙ</option>				
+			<option value="6">"ПРИНЦЕССА Гита",ароматизированный</option>					
+			<option value="7">Чай "ПРИНЦЕССА Гита", Индия, ЛИСТОВОЙ</option>
+			<option value="8">Чай "ПРИНЦЕССА Гита", Индия, пакет.,чёрный</option>					
+			<option value="9">Чай "ПРИНЦЕССА Гита", Цейлон, пакет.,чёрный</option>					
+			<option value="10">Чай "ПРИНЦЕССА Ява", ЛИСТОВОЙ</option>					
+			<option value="11">Чай "ПРИНЦЕССА Ява", зеленый, ПАКЕТИР.</option>					
+			<option value="12">Чай "ПРИНЦЕССА Ява", МАТЭ</option>					
+			<option value="13">Чай "Greenfield"  Лист</option>					
+			<option value="14">Чай "Greenfield"  в жестяных банках</option>					
+			<option value="15">Чай "Greenfield"  Пакетированный	</option>					
+			<option value="16">Чай "Greenfield"  Пирамидки</option>					
+			<option value="17">Подарочные наборы Чай "Greenfield"</option>					
+			<option value="18">Чай "Tess" листовой</option>					
+			<option value="19">Чай "Теss" пакетированный</option>					
+			<option value="20">Чай "Теss" пирамидки</option>					
+			<option value="21">Подарочные набор  Чай "Tess"</option>					
+			<option value="22">Кофе "Жокей" натуральный жареный, ЗЕРНО</option>					
+			<option value="23">Кофе "Жокей" натуральный жареный, МОЛОТЫЙ</option>					
+			<option value="24">Кофе растворимый порошок</option>					
+			<option value="25">Кофе растворимый гранулированный</option>					
+			<option value="26">Кофе растворимый сублимированный</option>					
+			<option value="27">Подарочный набор Кофе "Жокей", молотый</option>					
+			<option value="28">Кофе "JARDIN", натуральный жареный молотый</option>					
+			<option value="29">Кофе "JARDIN" натуральный жареный в зернах</option>					
+			<option value="30">Кофе "JARDIN", растворимый</option>					
+			<option value="31">Подарочные набор Кофе "JARDIN"</option>					
+
+		</select>
+	</th>
+	<th>Вес пачек</th>
+	<th>Пачек в коробке</th>
+	<th class="code-cell">Код</th>
+	<th class="price-cell">Цена (руб)</th>
+	<th>Кол-во (шт)</th>
+	<th colspan="2">Сумма (руб)</th>
+</tr>
+
+<tr class="price-string">
+	<th>Чай "ПРИНЦЕССА Канди", Цейлон, листовой</th>
+	<td><select id="candyList" class="name2">
+			<option value="0">Медиум,ВОР1А, 100 гр</option>
+			<option value="1">Медиум,ВОР1А, 250 гр</option>
+			<option value="2">Медиум, ВОР1А,  50 гр </option>
+			<option value="3">Медиум, ВОР1А, 200 гр </option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td class="summ-cell">0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Чай "ПРИНЦЕССА Канди", Цейлон, пакет.,черный</th>
+	<td><select id="candyPack" class="name2">
+			<option value="0">Канди Цейлон(2грх25п.),double</option>
+			<option value="1">Канди Цейлон (2грх50п.),double</option>
+			<option value="2">Канди Цейлон (2грх100п.),double</option>
+			<option value="3">Канди Цейлон (2грх100п.+25п.),double</option>
+			<option value="4">РОТ ТЕА (2г.х30п.)</option>
+			<option value="5">РОТ ТЕА (2х50х48)</option>
+			<option value="6">РОТ ТЕА (2х100х24)</option>
+			<option value="7">Лимон (1,5х25) double</option>
+			<option value="8">Эрл Грей (1,5х25) double</option>
+			<option value="9">Клубника (1,5х25) double</option>
+			<option value="10">Вишня (1,5х25) double</option>
+			<option value="11">Ч. Смородина (1,5х25) double</option>
+			<option value="12">Лесная ягода (1,5х25) double</option>
+			<option value="13">Малина (1,5х25) double</option>
+			<option value="14">Персик/абрикос (1,5х25) double</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Чай "ПРИНЦЕССА Нури", ОТБОРНЫЙ, листовой</th>
+	<td><select id="nuriList" class="name2">
+			<option value="0">Букет,100 гр</option>
+			<option value="1">Букет, 250 гр</option>
+			<option value="2">Бест, 100 гр</option>
+			<option value="3">Бест, 250 гр</option>
+			<option value="4">Пекое,100 гр</option>
+			<option value="5">Пекое,250 гр</option>
+			<option value="6">Экстра, 100 гр</option>
+			<option value="7">Экстра, 250 гр</option>
+			<option value="8">Эрл Грей, 100</option>
+			<option value="9">Эрл Грей, 250</option>
+			<option value="10">Высокогорный, BOP HG, 100 гр</option>
+			<option value="11">Высокогорный, BOP HG, 250 гр</option>
+			<option value="12">Высокогорный,СТС HG, 100 гр</option>
+			<option value="13">Высокогорный, СТС HG, 250 гр</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Чай "ПРИНЦЕССА Нури", Цейлон, пакет.,черный</th>
+	<td><select id="nuriPack" class="name2">
+			<option value="0">Отборный (2х25х72)</option>
+			<option value="1">Отборный (2х50х36)</option>
+			<option value="2">Отборный (2х100х18)</option>
+			<option value="3">Отборный РОТ (2х30х80)</option>
+			<option value="4">Отборный РОТ (2х50х48)</option>
+			<option value="5">Отборный РОТ (2х100х24)</option>
+			<option value="6">Кенийский черный (2х25х72)</option>
+			<option value="7">Кенийский черный (2х100х18)</option>
+			<option value="8">Оригинальный черный, цейлон. (2х25х72)</option>
+			<option value="9">Оригинальный черный, цейлон. (2х100х18)</option>
+			<option value="10">Оригинальный черный, цейлон. (2х100х18+25п), double</option>
+			<option value="11">Высокогорный, (2 х 25 х 72)</option>
+			<option value="12">Высокогорный, (2 х 50 х 36)</option>
+			<option value="13">Высокогорный, (2 х 100 х 18)</option>
+			<option value="14">Высокогорный, (2грх100п.+25п.),double</option>
+			<option value="15">Высокогор.,POT TEA (2х30х80) б/нит.</option>
+			<option value="16">Высокогор-й,POT TEA (2х50х48) б/нит.</option>
+			<option value="17">Высокогор-й,POT TEA (2х100х24) б/нит.</option>
+			<option value="18">Коллекция черного чая (2гр.x25п.)х4,double</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>"ПРИНЦЕССА Нури",ароматизированный</th>
+	<td><select id="nuriAroma" class="name2">
+			<option value="0">Бергамот (1,5х25)</option>
+			<option value="1">Лимон (1,5х25) </option>
+			<option value="2">Клубника (1,5х25)</option>
+			<option value="3">Вишня (1,5х25)</option>
+			<option value="4">Ч. Смородина (1,5х25)</option>
+			<option value="5">Малина (1,5х25)</option>
+			<option value="6">Яблоко (1,5х25)</option>
+			<option value="7">Персик/абрикос (1,5х25)</option>
+			<option value="8">Яблоко/корица (1,5х25)</option>
+			<option value="9">Апельсин/мандарин (1,5х25)</option>
+			<option value="10">Ягодный (1,5х25)</option>
+			<option value="11">Клубника на десерт (1,5х25)</option>
+			<option value="12">Ягодные мотивы ((1,5гр.х25п.)х3)</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td class="summ-cell">0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Чай "ПРИНЦЕССА Гита", Индия, ГРАНУЛИРОВАННЫЙ</th>
+	<td><select id="gitaGran" class="name2">
+			<option value="0">Медиум, СТС, 50 гр х 100</option>
+			<option value="1">Медиум, СТС, 100 гр х 80</option>
+			<option value="2">Медиум, СТС, 250 гр х 24</option>
+			<option value="3">Медиум, СТС, 200 гр х 30</option>
+			<option value="4">Медиум, СТС ВОР, 100 гр., м/уп.</option>
+			<option value="5">Медиум, СТС ВОР ,200 гр., м/уп.</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td class="summ-cell">0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>							
+
+<tr class="price-string">
+	<th>"ПРИНЦЕССА Гита",ароматизированный</th>
+	<td><select id="gitaAroma" class="name2">
+			<option value="0">Лимон (1,5гр.х24п.) РОТ ТЕА</option>
+			<option value="1">Клубника (1,5гр.х24п.) РОТ ТЕА</option>
+			<option value="2">Вишня (1,5гр.х24п.) РОТ ТЕА</option>
+			<option value="3">Ч.Смородина (1,5гр.х24п.) РОТ ТЕА</option>
+			<option value="4">Лесные ягоды (1,5гр.х24п.) РОТ ТЕА</option>
+			<option value="5">Малина (1,5гр.х24п.) РОТ ТЕА</option>
+			<option value="6">Клубничное лакомство (1,5гр.х24п.) РОТ ТЕА</option>
+			<option value="7">Персик и Абрикос (1,5гр.х24п.) РОТ ТЕА</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td class="summ-cell">0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>			
+
+<tr class="price-string">
+	<th>Чай "ПРИНЦЕССА Гита", Индия, ЛИСТОВОЙ</th>
+	<td><select id="gitaList" class="name2">
+			<option value="0">Медиум, 100 гр х 64</option>
+			<option value="1">Медиум, FBOP, 250 гр</option>
+			<option value="1">Традиционный экономи, 100 гр х 64</option>
+			<option value="1">Традиционный экономи, 250 гр х 24</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td class="summ-cell">0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>			
+
+<tr class="price-string">
+	<th>Чай "ПРИНЦЕССА Гита", Индия, пакет.,чёрный</th>
+	<td><select id="gitaPack" class="name2">
+			<option value="0">Single (2x25)</option>
+			<option value="1">Single (2x25+5п)</option>
+			<option value="2">Single (2x50)</option>
+			<option value="3">Single (2x100)</option>
+			<option value="4">Single (2x100)+Гита Цейлон 25п.</option>
+			<option value="5">РОТ ТЕА (2х30)  б/нит</option>
+			<option value="6">POT TEA,(2 х 50) б/нит.</option>
+			<option value="7">POT TEA,(2 х 100) б/нит.</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td class="summ-cell">0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>			
+
+<tr class="price-string">
+	<th>Чай "ПРИНЦЕССА Гита", Цейлон, пакет.,чёрный</th>
+	<td><select id="gitaCeilon" class="name2">
+			<option value="0">Single (2x25)</option>
+			<option value="1">Single (2x25+5п)</option>
+			<option value="2">Single (2x50)</option>
+			<option value="3">Single (2x100)</option>
+			<option value="4">Single (2x100)+Гита Индия 25п.</option>
+			<option value="5">РОТ ТЕА (2х30)  б/нит</option>
+			<option value="6">POT TEA,(2 х 50) б/нит.</option>
+			<option value="7">POT TEA,(2 х 100) б/нит.</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td class="summ-cell">0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>			
+
+<tr class="price-string">
+	<th>Чай "ПРИНЦЕССА Ява", ЛИСТОВОЙ</th>
+	<td><select id="javaList" class="name2">
+			<option value="0">Зеленый "Экономи", 100 гр, КИТАЙ</option>
+			<option value="1">Зеленый "Экономи", 200 гр, КИТАЙ</option>
+			<option value="2">Зеленый "Медиум", 100 гр, ВЬЕТНАМ</option>
+			<option value="3">Зеленый "Премиум", 100 гр, ИНДОНЕЗИЯ</option>
+			<option value="4">Зеленый "Бест", 100 гр, КИТАЙ</option>
+			<option value="5">Зеленый "Жасмин", 100 гр, КИТАЙ</option>
+			<option value="6">Каркаде 80гр м/у</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td class="summ-cell">0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>			
+
+<tr class="price-string">
+	<th>Чай "ПРИНЦЕССА Ява", зеленый, ПАКЕТИР.</th>
+	<td><select id="javaPack" class="name2">
+			<option value="0">Зеленый (2x25x72)</option>
+			<option value="1">Зеленый (2гр.х100п.) double</option>
+			<option value="2">Зеленый с жасмином (2x25x72)</option>
+			<option value="3">Зеленый (1,5x25x72) с лимоном</option>
+			<option value="4">Зеленый double (1,5грx25x72) с мятой</option>
+			<option value="5">Зеленый double (1,5грx25x72) с яблоком</option>
+			<option value="6">Зеленый double (1,5грx25x72) с бергамотом</option>
+			<option value="7">Зеленый double (1,5x25x72) клубничное настроение</option>
+			<option value="8">Зеленое ассорти ((1,5гр.х25п.)х4), double</option>
+			<option value="9">Каркадэ (1,5гр.х25п.)double</option>
+			<option value="10">Каркадэ коктейль ((1,5гр.х25п.)х4шт.)</option>
+			<option value="11">Каркадэ double "Июльский сад" (1,5x25x48)</option>
+			<option value="12">Каркадэ double "Клубничный десерт" (1,5x25x48)</option>
+			<option value="13">Каркадэ double "Спелая вишня" (1,5x25x48)</option>
+			<option value="14">Каркадэ double "Ягодная поляна" (1,5x25x48)</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td class="summ-cell">0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>			
+
+<tr class="price-string">
+	<th>Чай "ПРИНЦЕССА Ява", МАТЭ</th>
+	<td><select id="javaMate" class="name2">
+			<option value="0">Матэ 200 гр. листовой</option>
+			<option value="1">Матэ (1,5х25х32) пакет</option>
+			<option value="2">Матэ (1,5х25х32) банан пакет</option>
+			<option value="3">Матэ (1,5х25х32) маракуйя пакет</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td class="summ-cell">0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>			
+
+<tr class="price-string">
+	<th>Чай "Greenfield"  Лист</th>
+	<td><select id="greenList" class="name2">
+			<option value="0">Kenyan Sunrise, кенийский, черный</option>
+			<option value="1">Kenyan Sunrise, кенийский, черный</option>
+			<option value="2">Golden Ceylon, цейлонский, черный</option>
+			<option value="3">Golden Ceylon, цейлонский, черный</option>
+			<option value="4">Classic Breakfast, индийский, черный</option>
+			<option value="5">Classic Breakfast, индийский, черный</option>
+			<option value="6">Magic Yunnan, китайский черный</option>
+			<option value="7">Magic Yunnan, китайский черный</option>
+			<option value="8">Flying Dragon, китайский зеленый</option>
+			<option value="9">Flying Dragon, китайский зеленый</option>
+			<option value="10">Jasmin Dream, зеленый с жасмином</option>
+			<option value="11">Jasmin Dream, зеленый с жасмином</option>
+			<option value="12">Earl Grey Fantasy, чёрный чай</option>
+			<option value="13">Earl Grey Fantasy, чёрный чай</option>
+			<option value="14">Japanese Sencha, зеленый чай</option>
+			<option value="15">Fine Darjeeling, черный чай</option>
+			<option value="16">Delicate Keemun, черный чай</option>
+			<option value="17">Highland Oolong, green tea</option>
+			<option value="18">Noble Pu-Erh, black tea</option>
+			<option value="19">White Bloom, white tea</option>
+			<option value="20">Lapsang Souchong, black tea, 75гр. х 18</option>
+			<option value="21">Christmas Mystery, black tea, 100 гр.</option>
+			<option value="22">Tropical Marvel, green tea, 100 гр.</option>
+			<option value="23">Spring Melody, black tea, 100 гр.</option>
+			<option value="24">Barberry Garden, black tea, 100 гр.</option>
+			<option value="25">Lemon Spark, black tea, 100 гр.</option>
+			<option value="26">Vanilla Wave, black tea, 100 гр.</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td class="summ-cell">0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>			
+
+<tr class="price-string">
+	<th>Чай "Greenfield"  в жестяных банках</th>
+	<td><select id="greenBan" class="name2">
+			<option value="0">Golden Ceylon 150 гр. ж/б</option>
+			<option value="1">Magic Yunnan 150 гр. ж/б</option>
+			<option value="2">Flying Dragon 150 гр. ж/б</option>
+			<option value="3">Earl Grey Fantasy 150 гр. ж/б</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td class="summ-cell">0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>			
+
+<tr class="price-string">
+	<th>Чай "Greenfield"  Пакетированный</th>
+	<td><select id="greenPack" class="name2">
+			<option value="0">Kenyan Sunrise, кенийский, черный (2х25х15)</option>
+			<option value="1">Golden Ceylon, цейлонский, черный (2х25х15)</option>
+			<option value="2">Classic Breakfast, индийский, черный (2х25х15)</option>
+			<option value="3">Magic Yunnan, китайский черный (2х25х15)</option>
+			<option value="4">Flying Dragon, китайский зеленый (2х25х15)</option>
+			<option value="5">Jasmin Dream, зеленый с жасмином (2х25х15)</option>
+			<option value="6">Earl Grey Fantasy, чёрный (2х25х15)</option>
+			<option value="7">Japanese Sencha, зеленый (1,5х25х15)</option>
+			<option value="8">Fine Darjeeling, black tea, (2х25х15)</option>
+			<option value="9">Delicate Keemun, black tea, (2х25х15)</option>
+			<option value="10">White Bloom, white tea, (1,5гр. х 25 х 15)</option>
+			<option value="11">Noble Pu-Erh, black tea, (2гр. х 25 х 15)</option>
+			<option value="12">Highland Oolong, green tea, (2гр. х 25 х 15)</option>
+			<option value="13">Lapsang Souchong, black tea, (2гр. х 25 х 15)</option>
+			<option value="14">Honey Rooibos, herbal tea (1,5х25х10)</option>
+			<option value="15">Mate Aguante, herbal tea (1,5х25х10)</option>
+			<option value="16">Rich Camomile, herbal tea (1,5 х 25 х 10)</option>
+			<option value="17">Summer Bouquet,herbal tea,(2х25х10)</option>
+			<option value="18">Christmas Mystery, black tea (1,5х25х10)</option>
+			<option value="19">Green Melissa, green tea (1,5х25х10)</option>
+			<option value="10">Lotus Breez, green tea (1,5х25х10)</option>
+			<option value="21">Tropical Marvel,green tea(2гр.х25п.)</option>
+			<option value="22">Mango Delight,white tea(1,8гр.х25п.)</option>
+			<option value="23">Ginger Red, herbal tea (2х25х10)</option>
+			<option value="24">Festive Grape, herbal tea (2х25х10)</option>
+			<option value="25">Camomile Meadow, herbal tea (1,5 х 25 х 10)</option>
+			<option value="26">Cremy Rooibos, herbal tea (1,5 х 25 х 10)</option>
+			<option value="27">Spring Melody, black tea (1,5 х 25 х 10)</option>
+			<option value="28">Easter Cheer, black tea (1,5 х 25 х 10)</option>
+			<option value="29">Barberry Garden, black tea (1,5гр.х25п.)</option>
+			<option value="30">Lemon Spark, black tea (1,5гр.х25п.)</option>
+			<option value="31">Vanilla Wave, black tea (1,5гр.х25п.)</option>
+			<option value="32">Kenyan Sunrise, black tea (2гр. х 100 х 9)</option>
+			<option value="33">Golden Ceylon,black tea, (2гр. х 100 х 9)</option>
+			<option value="34">Classic Breakfast,black tea, (2гр. х 100 х 9)</option>
+			<option value="35">Magic Yunnan,black tea, (2гр. х 100 х 9)</option>
+			<option value="36">Flying Dragon,green tea, (2гр. х 100 х 9)</option>
+			<option value="37">Jasmine Dream,green tea, (2гр. х 100 х 9)</option>
+			<option value="38">Earl Grey Fantasy,black tea, (2гр. х 100 х 9)</option>
+			<option value="39">Green Melissa,green tea(1,5гр.х100п.)</option>
+			<option value="40">Summer Bouquet,herbal tea(2гр.х100п.)</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td class="summ-cell">0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>			
+
+<tr class="price-string">
+	<th>Чай "Greenfield"  Пирамидки</th>
+	<td><select id="greenPiramid" class="name2">
+			<option value="0">Rich Ceylon ,black tea, (2гр.х20п.)пирамида</option>
+			<option value="1">Yunnan Wonder ,black tea, (2гр.х20п.)пирамида</option>
+			<option value="2">Royal Earl Grey ,black tea, (2гр.х20п.)пирамида</option>
+			<option value="3">Oriental Spirits ,black tea, (1.8гр.х20п.)пирамида</option>
+			<option value="4">Blueberry Forest ,black tea, (1.8гр.х20п.)пирамида</option>
+			<option value="5">Harmony Land ,green tea, (2гр.х20п.)пирамида</option>
+			<option value="6">Jasmine Symphony ,green tea, (2гр.х20п.)пирамида</option>
+			<option value="7">Milky Oolong ,green tea, (1.8гр.х20п.)пирамида</option>
+			<option value="8">Orange Blossom ,herbal tea, (1.8гр.х20п.)пирамида</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Подарочные наборы Чай "Greenfield"</th>
+	<td><select id="greenPresent" class="name2">
+			<option value="0">Подар.набор Greenfield Ассорти</option>
+			<option value="1">Подар.набор Ассорти №1 лист. 9 сортов</option>
+			<option value="2">Подар.набор Ассорти №2 лист.9 сортов</option>
+			<option value="3">Подар.набор с чашкой (2грх25п.х2шт.)</option>
+			<option value="4">Подар.набор с жестяной банкой (200гр.х2шт.)</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Чай "Tess" листовой</th>
+	<td><select id="tessList" class="name2">
+			<option value="0"> Sunrise (Санрайз), black tea, 100 гр. х 15</option>
+			<option value="1">Сeylon, (Цейлон), black tea, 100 гр</option>
+			<option value="2">Kenya, (Кения), black tea, СТС, 100 гр</option>
+			<option value="3">Pleasure (Плэжа), black tea, 100 гр. х 15</option>
+			<option value="4">Style (Стайл), green tea, 100 гр. х 14</option>
+			<option value="5">Lime (Лайм), green tea, 100 гр. х 15</option>
+			<option value="6">Glory (Глори), herbal tea, 90 гр. х 15</option>
+			<option value="7">Light (Лайт), herbal tea, 100 гр. х 15</option>
+			<option value="8">Earl Grey (Эрл Грей), black tea 100 гр</option>
+			<option value="9">Orange black tea 100 гр</option>
+			<option value="10">Flirt green tea100 гр</option>
+			<option value="11">Flame herbal tea 90 гр</option>
+			<option value="12">Cherry herbal tea 90 гр</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Чай "Теss" пакетированный</th>
+	<td><select id="tessPack" class="name2">
+			<option value="0">Sunrise (Санрайз), black tea,(2гр. х 25 х 10)</option>
+			<option value="1">Сeylon,black tea,(2гр. х 25 х 10)</option>
+			<option value="2">Kenya,black tea,(2гр. х 25 х 10)</option>
+			<option value="3">Pleasure (Плэжа), black tea,(1,5гр. х 25 х 10)</option>
+			<option value="4">Earl Grey ,black tea (1,8гр.х25п.)</option>
+			<option value="5">Orange black tea  (1,5гр.х25п.)</option>
+			<option value="6">Style (Стайл), green tea,(2гр. х 25 х 10)</option>
+			<option value="7">Lime (Лайм), green tea,(1,5гр. х 25 х 10)</option>
+			<option value="8">Flirt green tea (1,5гр.х25п.)</option>
+			<option value="9">Light (Лайт), herbal tea,(1,5гр. х 25 х 10)</option>
+			<option value="10">Glory (Глори), herbal tea,(2гр. х 25 х 10)</option>
+			<option value="11">Daisy (Дэйзи), herbal tea,(1,5гр. х 25 х 10)</option>
+			<option value="12">Flame herbal tea (2гр.х25п.)</option>
+			<option value="13">Cherry herbal tea (2гр.х25п.)</option>
+			<option value="14">Sunrise,black tea(1,8гр.х100п.)</option>
+			<option value="15">Pleasure,black tea(1,5гр.х100п.)</option>
+			<option value="16">Lime,green tea(1,5гр.х100п.)</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Чай "Теss" пирамидки</th>
+	<td><select id="tessPiramid" class="name2">
+			<option value="0">Ceylon Paradise ,black tea(2гр.х20п.)пирамида</option>
+			<option value="1">Forest Dream (1,8гр.х20п.)пирамида</option>
+			<option value="2">Berry Bar (1,8гр.х20п.)пирамида</option>
+			<option value="3">Lemon Tree (1,8гр.х20п.)пирамида</option>
+			<option value="4">Caramel Charm ,black tea(1,8гр.х20п.)пирамида</option>
+			<option value="5">Earl Grey Secret ,black tea(2гр.х20п.)пирамида</option>
+			<option value="6">Green Way ,green tea(1,8гр.х20п.)пирамида</option>
+			<option value="7">Pina Colada (1,8гр.х20п.)пирамида</option>
+			<option value="8">Ginger Mojito (1,8гр.х20п.)пирамида</option>
+			<option value="9">Strawberry Shake ,green tea(2гр.х20п.)пирамида</option>
+			<option value="10">Summer Time (2гр.х20п.)пирамида</option>
+			<option value="11">Fruity Punch ,herbal tea(2гр.х20п.)пирамида</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+ <tr class="price-string">
+	<th>Подарочные набор  Чай "Tess"</th>
+	<td><select id="tessPresent" class="name2">
+			<option value="0">Подарочный набор TESS, 3п.+кружка</option>
+			<option value="1">Подар.набор Tess Ассорти, пакет</option>
+			<option value="2">Подар.набор Tess Ассорти лист.12 сортoв №1</option>
+			<option value="3">Подар.набор Tess Ассорти лист.12 сортoв №2</option>
+			<option value="4">Подар.набор Tess с чайником 3п.лист.(290гр)</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Кофе "Жокей" натуральный жареный, ЗЕРНО</th>
+	<td><select id="jockeyCorn" class="name2">
+			<option value="0">Кофе "Жокей" в зерн., "Классический" Арабика</option>
+			<option value="1">Кофе "Жокей" в зерн., "Классический" Арабика</option>
+			<option value="2">Кофе "Жокей" в зерн., "Классический" в/c, (ал. уп.)</option>
+			<option value="3">Кофе "Жокей" "По-восточному" в/с, 250гр</option>
+			<option value="4">Кофе "Жокей" "По-восточному" в/с, 500гр</option>
+			<option value="5">Кофе "Жокей" в зернах, В/сорт "Традиционный"</option>
+			<option value="6">Кофе "Жокей" в зернах, В/сорт "Традиционный"</option>
+			<option value="7">Кофе "Жокей" в зернах, В/сорт "Традиционный"</option>
+			<option value="8">Кофе в/с, в зернах, "Caffe italiano" </option>
+			<option value="9">Кофе в/с, в зернах, "Caffe italiano" </option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Кофе "Жокей" натуральный жареный, МОЛОТЫЙ</th>
+	<td><select id="jockeyMell" class="name2">
+			<option value="0">Кофе в/c, мол. "Классический" вакуум</option>
+			<option value="1">Кофе в/c, мол. "Классический" вакуум</option>
+			<option value="2">Кофе в/c, мол. "Классический" вакуум</option>
+			<option value="3">Кофе в/c, мол. "По-восточному" вакуум</option>
+			<option value="4">Кофе в/c, мол. "По-восточному" вакуум</option>
+			<option value="5">Кофе в/c, мол. "По-восточному" вакуум</option>
+			<option value="6">Кофе В/с, мол. "Традиционный" вакуум</option>
+			<option value="7">Кофе в/с, мол. "Caffe italiano" вакуум</option>
+			<option value="8">Кофе в/с, мол. "Caffe italiano" вакуум</option>
+			<option value="9">Кофе в/с, мол. "Caffe italiano" вакуум</option>
+			<option value="10">Для турки 100гр, сорт высший</option>
+			<option value="11">Для турки 200гр, сорт высший</option>
+			<option value="12">Кофе В/с, мол. "Традиционный" вакуум</option>
+			<option value="13">Кофе В/с, мол. "Традиционный" вакуум</option>
+			<option value="14">Кофе Жокей, "Красный апельсин", в/с   </option>
+			<option value="15">Кофе Жокей, "Ирландские сливки", в/с   </option>
+			<option value="16">Кофе Жокей, "Лесной орех", в/с   </option>
+			<option value="17">Кофе Жокей, "Баварский шоколад", в/с   </option>
+			<option value="18">"По-восточному" в ПАКЕТИКАХ по 6гх10шт</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Кофе растворимый порошок</th>
+	<td><select id="jockeyPuder" class="name2">
+			<option value="0">Кофе "Жокей Чемпион", ПОРОШОК, жесть</option>
+			<option value="1">Кофе "Жокей" 3 в 1(18гр*20шт)</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Кофе растворимый гранулированный</th>
+	<td><select id="jockeyGran" class="name2">
+			<option value="0">Кофе "Жокей  ФАВОРИТ"  ГРАНУЛА, стекло</option>
+			<option value="1">Кофе "Жокей  ФАВОРИТ"  ГРАНУЛА, стекло</option>
+			<option value="2">Кофе "Жокей  Фаворит" 95г.,гран. м/у</option>
+			<option value="3">Кофе "Жокей  Фаворит" 170г.,гран. м/у</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Кофе растворимый сублимированный</th>
+	<td><select id="jockeySublim" class="name2">
+			<option value="0">Кофе "Жокей  ТРИУМФ"  СУБЛИМИР-Й, стекло</option>
+			<option value="1">Кофе "Жокей  Триумф", эконом.м/у</option>
+			<option value="2">Кофе "Жокей  Триумф", эконом.м/у</option>
+			<option value="3">Кофе "Жокей Триумф" 280 гр,м/у</option>
+			<option value="4">Кофе "Жокей Триумф" 450 гр,м/у</option>
+			<option value="5">Кофе "Жокей  Триумф", стекло</option>
+			<option value="6">Кофе "Жокей  Триумф", стекло + ложка</option>
+			<option value="7">Кофе "Жокей  ИМПЕРИАЛ", стекло</option>
+			<option value="8">Кофе "Жокей  ИМПЕРИАЛ", эконом.м/у</option>
+			<option value="9">Кофе "Жокей  ИМПЕРИАЛ", эконом.м/у</option>
+			<option value="10">Кофе "Жокей  ИМПЕРИАЛ", стекло</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Подарочный набор Кофе "Жокей", молотый</th>
+	<td><select id="jockeyPresent" class="name2">
+			<option value="0">Подар.набор с термокружкой (250гр+250,гр)вакуум</option>
+			<option value="1">Подар.набор с чашкой (250гр+250,гр)вакуум</option>
+			<option value="2">Подар.набор с банкой для кофе (250гр.х2) (По вост.+ C.Italiano) вакуум</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Кофе "JARDIN", натуральный жареный молотый</th>
+	<td><select id="jardinMell" class="name2">
+			<option value="0">Continental, 250гр.,вакуум</option>
+			<option value="1">Dessert cup, 250гр.,вакуум</option>
+			<option value="2">Dessert cup 250г.прем/с.в жест.банке</option>
+			<option value="3">All day long, 250гр.,вакуум</option>
+			<option value="4">Espresso ctile di Milano, 250гр.,вакуум</option>
+			<option value="5">Guatemala cloud forest, 250гр., в/с</option>
+			<option value="6">Sumatra mandheling, 250гр., в/с</option>
+			<option value="7">Ethiopia sidamo, 250гр., в/с</option>
+			<option value="8">Colombia supremo, 250гр., в/с</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Кофе "JARDIN" натуральный жареный в зернах</th>
+	<td><select id="jardinCorn" class="name2">
+			<option value="0">Continental, 250гр.,зерно, сорт премиум</option>
+			<option value="1">Continental 500 гр., зерно, сорт премиум</option>
+			<option value="2">Dessert cup, 250гр.,зерно, сорт премиум</option>
+			<option value="3">Dessert cup 500 гр., зерно, сорт премиум</option>
+			<option value="4">All day long, 250гр.,зерно, сорт премиум</option>
+			<option value="5">All day long 500 гр., зерно, сорт премиум</option>
+			<option value="6">Espresso stile di Milano, 250гр.,зерно, сорт премиум</option>
+			<option value="7">Espresso stile di Milano 500 гр.,зерно, сорт премиум</option>
+			<option value="8">Guatemala cloud forest, 250гр.,зерно</option>
+			<option value="10">Guatemala cloud forest, 1000гр.,зерно</option>
+			<option value="11">Sumatra mandheling, 250гр.,зерно</option>
+			<option value="12">Sumatra mandheling, 1000гр.,зерно</option>
+			<option value="13">Ethiopia sidamo, 250гр.,зерно</option>
+			<option value="14">Colombia supremo, 250гр.,зерно</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Кофе "JARDIN", растворимый</th>
+	<td><select id="jardinSoluble" class="name2">
+			<option value="0">Colombia Medelin, 95 гр.,стекло</option>
+			<option value="1">Colombia Medellin 95 гр.,м/у</option>
+			<option value="2">Colombia Medellin 170 гр.,м/у</option>
+			<option value="3">Colombia Medellin 280г. м/у</option>
+			<option value="4">Kenya Kilimanjaro, 95 гр.,стекло</option>
+			<option value="5">Kenya Kilimanjaro 95 гр.,м/у</option>
+			<option value="6">Kenya Kilimanjaro 170 гр.,м/у</option>
+			<option value="7">Guatemala Atitlan, 95 гр.,стекло</option>
+			<option value="8">Guatemala Atitlan 95 гр.,м/у</option>
+			<option value="9">Guatemala Atitlan 170 гр.,м/у</option>
+			<option value="10">Colombia Medelin(2грx26п.) в пакетиках</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+<tr class="price-string">
+	<th>Подарочные набор Кофе "JARDIN"</th>
+	<td><select id="jardinPresent" class="name2">
+			<option value="0">Подар.набор Gourmet 2х250гр.+кружка</option>
+			<option value="1">Подар.набор Colombia Medellin 95 гр+ложка</option>
+			<option value="2">Подар.набор Gourmet 2х250гр.+термокружка</option>
+			<option value="3">Подар.набор с банкой для кофе 2х250гр.(Sumatra M.+ Colombia S.)</option>
+			<option value="4">Подар.набор Ассорти Gourmet  4х100 гр.</option>
+			<option value="5">Подар.набор Ассорти Speciality  4х100гр.</option>
+		</select></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><input type="number" min="1" value="1"></td>
+	<td>0</td>
+	<td class="addItem"><span>+</span></td>
+</tr>
+
+                                                                                                                                                                       
+            
+            
+<tr id="order_title"><th colspan="9"><h3>Заказ</h3></th></tr>
+</table>
+<table class="sum-table">
+<tr><th align="right">Сумма заказа</th><td id="totalSum">0</td></tr>
+</table>
+<button id="next_step" class="order-button" disabled>Продолжить</button>
+
+
+<div id="step2">
+<form action="handler.php" method="post">
+<h2>Шаг №2. Заполнение формы заказа</h2>
+<h3>Обязательно заполните все поля формы и отправьте заказ, или вернитесь к выбору товара</h3>
+<table>
+	<tr><td>Фамилия и Имя</td><td><input type="text" name="form_name" id="form_name" required></td></tr>
+    <tr><td>Электропочта</td><td><input type="email" name="form_mail" id="form_mail" required></td></tr>
+    <tr><td>Телефон</td><td><input type="tel" name="form_tel" id="form_tel" required></td></tr>
+    <tr><td>Адрес доставки</td>
+    	<td><textarea name="form_address" id="form_address" required  cols="30" rows="3"></textarea></td></tr>
+    <tr><th colspan="2"><input type="submit" name="form_submit" id="form_submit" class="order-button" value="Отправить заказ"><br>
+		<a href="#">Изменить заказ</a></th></tr>
+</table>
+	<input type="hidden" name="order_text" id="order_text" value="">
+</form>
+</div>        
+
+
+<script src="js/script.js"></script>
+	
+			
+</body>
+</html>
