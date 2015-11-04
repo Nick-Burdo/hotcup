@@ -1,12 +1,12 @@
 # hotcup
 Web-site for wholesale store of tea and coffee
 
-[Demo](http://tigra.zzz.com.ua/demo/hotcup/) 
+[Demo (*Hover over a cup*)](http://tigra.zzz.com.ua/demo/hotcup/) 
 
 The site consists of:
 
 ### Landing page includes
-- Main menu *Hover over a cup*
+- Main menu 
 - Brochures on the history of tea and coffee
 - Section reviews
 
