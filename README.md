@@ -6,7 +6,7 @@ Web-site for wholesale store of tea and coffee
 The site consists of:
 
 ### Landing page includes
-- Main menu
+- Main menu *Hover over a cup*
 - Brochures on the history of tea and coffee
 - Section reviews
 
